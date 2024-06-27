@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 
-class StartScreen extends StatefulWidget {
-  const StartScreen({super.key});
+class StartScreen extends StatelessWidget {
+  const StartScreen(this.startQuiz, {super.key});
 
-  @override
-  State<StartScreen> createState() => _StartScreenState();
-}
-
-class _StartScreenState extends State<StartScreen> {
+  final void Function() startQuiz;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,9 +31,7 @@ class _StartScreenState extends State<StartScreen> {
               ),
             ),
             ElevatedButton.icon(
-              onPressed: () => {
-                //...
-              },
+              onPressed: startQuiz,
               label: const Text('Start Quiz'),
               icon: const Icon(Icons.arrow_right_alt_rounded),
             )

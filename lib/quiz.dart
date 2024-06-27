@@ -1,19 +1,45 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/questions_screen.dart';
 import 'package:quiz_app/start_screen.dart';
 
-class QuizQuestions extends StatelessWidget {
-  const QuizQuestions({super.key});
+class Quiz extends StatefulWidget {
+  const Quiz({super.key});
 
-  // This widget is the root of your application.
+  @override
+  State<Quiz> createState() => _QuizState();
+}
+
+class _QuizState extends State<Quiz> {
+  var activeScreen = 'start-screen';
+
+  void switchScreen() {
+    setState(() {
+      activeScreen = 'questions-screen';
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    Widget screen = StartScreen(switchScreen);
+
+    if (activeScreen == 'questions-screen') {
+      screen = const QuestionsScreen();
+    }
+
     return MaterialApp(
       title: 'Quiz Questions',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.pink),
         useMaterial3: true,
       ),
-      home: const StartScreen(),
+      home: Scaffold(
+        body: Container(
+          decoration: const BoxDecoration(
+            color: Colors.pink,
+          ),
+          child: screen,
+        ),
+      ),
     );
   }
 }
