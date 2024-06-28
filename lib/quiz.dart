@@ -29,13 +29,14 @@ class _QuizState extends State<Quiz> {
     return MaterialApp(
       title: 'Quiz Questions',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.pink),
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: const Color.fromRGBO(255, 119, 188, 1)),
         useMaterial3: true,
       ),
       home: Scaffold(
         body: Container(
           decoration: const BoxDecoration(
-            color: Colors.pink,
+            color:  Color.fromRGBO(255, 119, 188, 1),
           ),
           child: screen,
         ),
